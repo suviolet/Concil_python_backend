@@ -1,0 +1,8 @@
+.cache
+.idea
+.coverage
+__pycache__
+*.pyc
+*.log*
+*.sqlite3
+.vscode  
