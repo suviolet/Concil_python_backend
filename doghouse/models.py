@@ -20,6 +20,6 @@ class Animal(models.Model):
     size = models.CharField(max_length=10, choices=size_choice)
     hair = models.CharField(max_length=10, choices=hair_choice)
     color = models.CharField(max_length=20)
-    description_ = models.TextField()
+    description = models.TextField()
     address = models.CharField(max_length=25)
 
