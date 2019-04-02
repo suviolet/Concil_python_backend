@@ -1,18 +1,14 @@
 import json
 
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.http import JsonResponse, Http404
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Animal
 
 def animal_list(request):
     animals = [
-        a for a in Animal.objects.all().values(
-            'name', 'specie', 'gender',
-            'age', 'size','hair', 'color',
-            'description', 'address'
-        )
+        a for a in Animal.objects.all().values()
     ]
 
     return JsonResponse(
@@ -42,4 +38,17 @@ def animal_add(request):
     return JsonResponse(
         animal, safe=False
     )
+
+@csrf_exempt
+def animal_remove(request, id):
+    if request.method == 'DELETE':
+        status = None
+        try:
+            animal = get_object_or_404(Animal, id=id)
+            animal.delete()
+            status = 'deleted'
+        except Http404:
+            status = 'animal not found'
+        finally:
+            return JsonResponse({'status': status})
 
