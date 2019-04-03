@@ -29,16 +29,8 @@ Após isso, vá para a pasta raiz desse projeto (Concil_python_backend) e siga a
 **4. Testando com curl:**
 - Adiciona um animal:
 
-    - request:
-
-    ```bash
+   ```bash
     $ curl -X POST http://localhost:8000/animals/ -H "Content-Type: application/json" -d '{"name": "Ada","specie": "cat","gender": "female","age": "kitten","size": "small","hair": "short","color": "preto","description": "cute cat loves human","address": "SP","adopted": false}'
-    ```
-
-    - response
-
-    ```bash
-    [02/Apr/2019 19:00:28] "POST /animals/ HTTP/1.1" 201 171
     ```
 
 - Retorna todas os animais:
@@ -57,9 +49,6 @@ Após isso, vá para a pasta raiz desse projeto (Concil_python_backend) e siga a
 
     - response:
 
-    ```bash
-    [02/Apr/2019 19:01:10] "GET /animals/ HTTP/1.1" 200 311
-    ```
     ```bash
     [
     {
@@ -89,7 +78,6 @@ Após isso, vá para a pasta raiz desse projeto (Concil_python_backend) e siga a
         "adopted": false
     }
     ]
-
     ```
 
 - Retorna um animal em específico utilizando `id`:
@@ -110,9 +98,6 @@ Após isso, vá para a pasta raiz desse projeto (Concil_python_backend) e siga a
     - response
 
     ```bash
-    [02/Apr/2019 19:04:47] "GET /animals/1/ HTTP/1.1" 200 155
-    ```
-    ```bash
     {
         "address": "SP",
         "adopted": false,
@@ -126,37 +111,19 @@ Após isso, vá para a pasta raiz desse projeto (Concil_python_backend) e siga a
         "size": "small",
         "specie": "cat"
     }
-
     ```
 
 - Atualiza um animal em específico utilizando `id`:
-
-    - request:
 
     ```bash
     $ curl -X PUT  http://localhost:8000/animals/1/ -H "Content-Type: application/json" -d '{"name": "Lovelace","specie": "cat","gender": "female","age": "kitten","size": "small","hair": "short","color": "preto","description": "adopted","address": "SP","adopted": true}'
     ```
 
-    - response
-
-    ```bash
-    [02/Apr/2019 19:08:48] "PUT /animals/1/ HTTP/1.1" 200 160
-    ```
-
 - Remove um animal em específico utilizando `id`:
-
-    - request:
 
     ```bash
     $ curl -X DELETE  http://localhost:8000/animals/1/
     ```
-
-    - response
-
-    ```bash
-    [02/Apr/2019 19:06:18] "DELETE /animals/1/ HTTP/1.1" 204 0
-    ```
-
 
 ***
 

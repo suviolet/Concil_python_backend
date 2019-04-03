@@ -10,6 +10,7 @@ class TestViewDoghouse:
     @pytest.fixture
     def animal(self):
         return {
+            'id': 1,
             'name': 'Ada',
             'specie': 'cat',
             'gender': 'female',
@@ -23,19 +24,8 @@ class TestViewDoghouse:
         }
 
     @pytest.fixture
-    def animal_saved(self):
-        animal = Animal.objects.create(
-            name='Ada',
-            specie='cat',
-            gender='female',
-            age='kitten',
-            size='small',
-            hair='short',
-            color='preto',
-            description='new baby',
-            address='SP',
-            adopted=False
-        )
+    def animal_saved(self, animal):
+        Animal.objects.create(**animal)
 
     @pytest.mark.django_db
     def test_post_animal(self, client, animal):
@@ -76,6 +66,7 @@ class TestViewDoghouse:
         response = client.get('/animals/')
         assert response.status_code == 200
         assert response.json() == [{
+            'id': 1,
             'name': 'Ada',
             'specie': 'cat',
             'gender': 'female',
@@ -94,6 +85,7 @@ class TestViewDoghouse:
 
         assert response.status_code == 200
         assert response.json() == {
+            'id': 1,
             'name': 'Ada',
             'specie': 'cat',
             'gender': 'female',
@@ -126,6 +118,7 @@ class TestViewDoghouse:
 
         assert response.status_code == 200
         assert response.json() == {
+            'id': 1,
             'name': 'Ada Lovelace',
             'specie': 'cat',
             'gender': 'female',

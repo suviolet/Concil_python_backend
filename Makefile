@@ -1,9 +1,7 @@
 SHELL=/bin/bash
 
 help:
-	@echo 'Makefile for Quake Log Parser / API                           '
 	@echo '                                                              '
-	@echo 'Usage:                                                        '
 	@echo '    make clean              Remove python compiled files      '
 	@echo '    make requirements_dev   Install required packages to Dev  '
 	@echo '    make lint               Verify code lint                  '
