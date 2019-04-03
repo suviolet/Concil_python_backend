@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Animal(models.Model):
 
     specie_choice = (('cat', 'gato'), ('dog', 'cachorro'))
@@ -22,4 +23,4 @@ class Animal(models.Model):
     color = models.CharField(max_length=20)
     description = models.TextField()
     address = models.CharField(max_length=25)
-
+    adopted = models.BooleanField(default=False)

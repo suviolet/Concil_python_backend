@@ -2,11 +2,11 @@ from rest_framework.serializers import ModelSerializer
 
 from .models import Animal
 
-class AnimalSerializer(ModelSerializer):   
+
+class AnimalSerializer(ModelSerializer):
     class Meta:
         model = Animal
         fields = (
-            'id',
             'name',
             'specie',
             'gender',
@@ -15,5 +15,6 @@ class AnimalSerializer(ModelSerializer):
             'hair',
             'color',
             'description',
-            'address'
+            'address',
+            'adopted'
         )
